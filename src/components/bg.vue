@@ -57,9 +57,10 @@ export default {
       console.log('[USP] using old image');
     },
     swapImages() {
+      try {
         localStorage.BG = localStorage.nextBG;
         this.BG = localStorage.nextBG;
-
+        
         localStorage.bgData = localStorage.nextBgData;
 
         localStorage.imgColor = localStorage.nextImgColor;
@@ -69,6 +70,10 @@ export default {
         localStorage.author = localStorage.nextAuthor;
 
         localStorage.image = localStorage.nextImage;
+        } catch (error) {
+          console.log(`[USP] Local storage error: ${error}`);
+          localStorage.clear();
+        }
     },
     getNewImage() {
         console.log('[USP] getting new image');
